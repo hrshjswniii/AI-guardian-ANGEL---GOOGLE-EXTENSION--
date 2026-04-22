@@ -394,7 +394,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           return { ok: true };
 
         case "SAVE_API_KEY":
-          await new Promise(r => chrome.storage.sync.set({ gemini_key: msg.key }, r));
+          await new Promise(r => chrome.storage.local.set({ openrouter_api_key: msg.key }, r));
           return { ok: true };
 
         case "CHECK_API_KEY":
