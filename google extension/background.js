@@ -4,14 +4,10 @@
 // ============================================================
 
 const VERSION = "2.0.0";
-const API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL = 'openai/gpt-4o-mini';
+const API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+const MODEL = 'gemini-2.0-flash';
 async function getApiKey() {
-  return new Promise((resolve) => {
-    chrome.storage.local.get(['openrouter_api_key'], (result) => {
-      resolve(result.openrouter_api_key || null);
-    });
-  });
+  return "AIzaSyD-Id2Kz8PBUu6BT5RLEgYXKB6_ePdPQJw";
 }
 // ─── Stat counters (persisted in storage) ───────────────────
 async function getStats() {

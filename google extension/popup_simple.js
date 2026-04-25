@@ -17,6 +17,16 @@ document.querySelectorAll('.tabs button').forEach(btn => {
 // ─── On Load ──────────────────────────────────────────────
 window.addEventListener('load', () => {
   loadAll();
+  
+  const pauseToggle = $('pauseToggle');
+  if (pauseToggle) {
+    chrome.storage.local.get(['guardianPaused'], res => {
+      pauseToggle.checked = !!res.guardianPaused;
+    });
+    pauseToggle.addEventListener('change', (e) => {
+      chrome.storage.local.set({ guardianPaused: e.target.checked });
+    });
+  }
 });
 
 async function loadAll() {

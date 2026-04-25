@@ -385,9 +385,19 @@
         }
     });
 
+    function checkAndInit() {
+        chrome.storage.local.get(['guardianPaused'], res => {
+            if (res.guardianPaused) {
+                console.log('[Guardian] ⏸️ Protection is paused. Skipping init.');
+                return;
+            }
+            init();
+        });
+    }
+
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
+        document.addEventListener("DOMContentLoaded", checkAndInit);
     } else {
-        init();
+        checkAndInit();
     }
 })();
